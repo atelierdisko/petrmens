@@ -1,0 +1,116 @@
+/*
+|--------------------------------------------------------------------------
+| Load fonts
+|--------------------------------------------------------------------------
+| Example
+|
+| @font-face {
+|   font-family: "Sans";
+|   font-weight: bold;
+|   font-style: normal;
+|   src: url('/fonts/NotoSans-Bold.ttf') format('truetype')
+| }
+|
+|--------------------------------------------------------------------------
+| Create a font class system
+|--------------------------------------------------------------------------
+|
+| Font classes are created according to the individual project.
+| Speak with the designer and take your time
+| Changing the class system afterwards is very error prone.
+|
+| Questions you might wanna ask yourself:
+| - Do we have multiple font families?
+| - How correlate font sizes to each other?
+| - Do we need media queries for font sizes?
+| - Are we gonna use special classes for italic or bold fonts?
+|
+|--------------------------------------------------------------------------
+| Naming
+|--------------------------------------------------------------------------
+|
+| - use t--alpha, t--beta etc.
+| - try to avoid using additional font utility classes, e.g. t--beta-bold
+| - no h
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap");
+
+/* Headline 1 /h1 */
+.t--alpha {
+  font-family: var(--font-family-sans);
+  font-weight: 400;
+  font-size: 102px;
+  line-height: 132px;
+  letter-spacing: 2px;
+}
+
+/* Headline 2 /h2 */
+.t--beta {
+  font-family: var(--font-family-sans);
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 83px;
+  letter-spacing: 2px;
+}
+
+/* Headline 3 /h3 */
+.t--gamma {
+  font-family: var(--font-family-sans);
+  font-weight: 400;
+  font-size: 51px;
+  line-height: 66px;
+}
+
+/* Headline 4 /h4 */
+.t--delta {
+  font-family: var(--font-family-sans);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 47px;
+}
+
+/* Navigation */
+.t--epsilon {
+  font-family: var(--font-family-sans);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 33px;
+}
+
+/* Subtitle 1 */
+.t--zeta {
+  font-family: var(--font-family-sans);
+  font-size: 17px;
+  line-height: 21px;
+}
+
+/* Subtitle 2 */
+.t--eta {
+  font-family: var(--font-family-sans);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+/* Body 1 */
+.t--theta {
+  font-family: var(--font-family-sans);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+/* Body 2 */
+.t--iota {
+  font-family: var(--font-family-sans);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .t--alpha {
+    font-size: 62px;
+    line-height: 92px;
+  }
+}

@@ -1,65 +1,119 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React, {useState, useContext, useEffect, Fragment} from "react";
+import axios from "axios";
+import styles from "./../styles/index.module.css";
+import joinClassNames from "../utilities/joinClassNames";
+import typography from "../styles/typography.module.css";
+import Image from "../components/Image/image";
+import Link from "next/link";
+import {getImage} from "../utilities/data";
+import {AppContext} from "./_app";
+import Meta from "../components/meta";
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+export default function Home({categories}) {
+    const [previewCategory, setPreviewCategory] = useState(null);
+    const {intro, setIntro, setHeaderBackLink} = useContext(AppContext);
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+    useEffect(() => {
+        setTimeout(() => {
+            setIntro(false);
+        }, 5000);
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+        setHeaderBackLink(null)
+    }, []);
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+    return (
+        <Fragment>
+            <Meta title={"Home"}/>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+            <div
+                className={styles.introRoot}
+                style={{
+                    display: intro !== false ? "block" : "none",
+                }}
+            >
+                <div className={styles.intro}>
+                    <h1
+                        className={joinClassNames(
+                            styles.introTitle,
+                            typography["t--alpha"]
+                        )}
+                    >
+                        <span className={styles.introTitleWord}>Petr</span>{" "}
+                        <span className={styles.introTitleWord}>Menš</span>
+                    </h1>
+                </div>
+            </div>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+            <div className={styles.categoriesRoot}>
+                <div className={styles.categoriesWrapper}>
+                    {categories.map((category, index) => {
+                        return (
+                            <Fragment key={`category-${index}`}>
+                                <Link href={category.slug}>
+                                    <a
+                                        className={joinClassNames(
+                                            styles.categoryItem,
+                                            typography["t--alpha"]
+                                        )}
+                                    >
+                    <span
+                        className={styles.categoryTitle}
+                        onMouseEnter={() => setPreviewCategory(category)}
+                        onMouseLeave={() => setPreviewCategory(null)}
+                    >
+                      {category.list_title}
+                    </span>
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
+                                        <Image
+                                            onMouseLeave={() => setPreviewCategory(null)}
+                                            className={joinClassNames(
+                                                styles.categoryPreview,
+                                                previewCategory === category
+                                                    ? styles.categoryPreviewActive
+                                                    : null
+                                            )}
+                                            manipulations={{
+                                                w: 800,
+                                            }}
+                                            progressiveLoading={false}
+                                            src={category.featuredPiece.image}
+                                            alt={category.featuredPiece.title}
+                                        />
+                                    </a>
+                                </Link>
+                            </Fragment>
+                        );
+                    })}
+                </div>
+            </div>
+        </Fragment>
+    );
+}
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+export async function getStaticProps() {
+    const {
+        data: {data: categories},
+    } = await axios.get("https://cms.petrmens.art/petrmens/items/category", {
+        params: {
+            fields: "*.*.*",
+        },
+    });
+
+    return {
+        props: {
+            categories: categories.map((category) => {
+                return {
+                    list_title: category.list_title,
+                    slug: category.slug,
+                    featuredPiece: {
+                        title: category.featured_piece.title,
+                        title_en: category.featured_piece.title_en,
+                        year: category.featured_piece.year,
+                        image: getImage(category.featured_piece.image),
+                    },
+                };
+            }),
+        },
+        revalidate: 10,
+    };
 }

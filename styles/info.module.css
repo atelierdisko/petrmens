@@ -1,0 +1,147 @@
+.close-index {
+    position: fixed;
+    right: calc(4 * var(--spacing-unit));
+    top: calc(4 * var(--spacing-unit));
+}
+
+
+.title {
+    position: sticky;
+    top: 0;
+    grid-column: 2 / span 6;
+    margin-top: 0;
+    margin-bottom: calc(2 * var(--spacing-unit));
+}
+
+.bioGrid {
+    grid-column: 2 / span 2;
+}
+
+.indexGrid {
+    grid-column: 5 / span 3;
+}
+
+.indexTitle {
+    margin-bottom: calc(3 * var(--spacing-unit));
+}
+
+.accordion,
+.piece-list,
+.yearList {
+    list-style: none;
+}
+
+.previewPiece {
+    left: calc(4 * var(--spacing-unit));
+    margin-top: -225px;
+    z-index: 900;
+    position: fixed;
+    top: 50%;
+    display: inline;
+    max-height: 450px;
+    max-width: 450px;
+}
+
+.previewPiece .lazyload-wrapper {
+    display: inline;
+    height: 100%;
+}
+
+.previewPiece img {
+    display: inline-flex;
+    height: 100%;
+    width: auto !important;
+}
+
+.accordionItemContent {
+    height: 0;
+    overflow: hidden;
+    margin: 0;
+}
+
+.accordionItemContent--dropped {
+    height: auto;
+    margin-top: calc(6 * var(--spacing-unit));
+}
+
+.accordionItemHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.accordionItem {
+    margin-bottom: calc(3 * var(--spacing-unit));
+}
+
+.accordionItemHeaderTitle {
+    margin: 0;
+}
+
+.yearListItem {
+    padding-bottom: calc(3 * var(--spacing-unit));
+    margin-bottom: calc(3 * var(--spacing-unit));
+    border-bottom: 1px solid var(--color-black);
+}
+
+.yearListItemYear {
+    display: block;
+    font-weight: bold;
+    margin-bottom: calc(1.5 * var(--spacing-unit));
+}
+
+.yearListItemYear,
+.itemTitle {
+    font-style: italic;
+}
+
+.itemTitle:hover {
+    text-decoration: underline;
+}
+
+.item {
+    margin-bottom: 4px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px), (max-width: 767px) {
+    .previewPiece {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .title {
+        grid-column: 1 / span 3;
+    }
+
+    .bioGrid {
+        grid-column: 1 / span 3;
+    }
+
+    .indexGrid {
+        grid-column: 1 / span 3;
+    }
+
+    .indexGrid {
+        margin-top: calc(7 * var(--spacing-unit));
+    }
+}
+
+@media (max-width: 767px) {
+    .title {
+        grid-column: 1 / span 4;
+    }
+
+    .bioGrid {
+        grid-column: 1 / span 4;
+    }
+
+    .indexGrid {
+        grid-column: 1 / span 4;
+    }
+
+    .indexGrid {
+        margin-top: calc(4 * var(--spacing-unit));
+    }
+}

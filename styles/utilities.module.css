@@ -1,0 +1,15 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 16px;
+    padding-left: 34px;
+    padding-right: 34px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px), (max-width: 767px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

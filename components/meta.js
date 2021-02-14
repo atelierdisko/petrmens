@@ -1,0 +1,40 @@
+import Head from "next/head";
+import React from "react";
+
+const Meta = ({title, description, image}) => {
+
+    let url = null;
+
+    if (typeof document !== "undefined") {
+        url = document.location.href;
+    }
+
+    const defaultImage = "https://img.jansasinka.de/petrmens/cms/a3d90cce-4a2a-4b97-bc53-e3b9f6a5da2e.jpg";
+    const defaultDescription = "Lorem ipsum";
+
+    return (
+        <Head>
+            <title>Petr Menš | {title}</title>
+            <meta
+                name="description"
+                content={description ? description : defaultDescription}
+            />
+            <meta property="og:title" content={`Petr Menš – ${title}`}/>
+            <meta
+                property="og:description"
+                content={description ? description : defaultDescription}
+            />
+
+            <meta property="og:type" content="website"/>
+            <meta property="og:url" content={url}/>
+            <link rel="icon" type="image/ico" href="/favicon.ico"/>
+
+            <meta
+                property="og:image"
+                content={`${image ? image : defaultImage}?w=1200&h=627&fit=crop`}
+            />
+        </Head>
+    )
+}
+
+export default Meta

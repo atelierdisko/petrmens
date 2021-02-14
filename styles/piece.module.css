@@ -1,0 +1,35 @@
+.image {
+    grid-column: 2 / span 6;
+}
+
+.meta {
+    grid-column: 2 / span 6;
+    grid-row: 2;
+    margin-top: calc(4 * var(--spacing-unit));
+    margin-bottom: calc(4 * var(--spacing-unit));
+}
+
+.metaItem{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 4px;
+}
+
+.metaItemDimensions,
+.metaItemTitle {
+    grid-column: 1 / span 2;
+}
+
+.metaItemTitle {
+    margin-bottom: var(--spacing-unit);
+}
+
+.metaItemYear {
+    text-align: right;
+}
+
+@media (min-width: 768px) and (max-width: 1024px), (max-width: 767px) {
+    .root > * {
+        grid-column: 1 / span 4;
+    }
+}
