@@ -20,7 +20,7 @@ export default function Piece({piece}) {
         .map((tag) => {
             return tag.tag_id.title;
         })
-        .join();
+        .join(", ");
 
     return (
         <Fragment>

@@ -100,9 +100,6 @@ export default function Info({ categories }) {
           marginTop: `26px`,
         }}
       >
-        <h2 className={joinClassNames(typography["t--beta"], styles.title)}>
-          Petr Menš
-        </h2>
       </div>
 
       <div className={joinClassNames(utilities.grid)}>
