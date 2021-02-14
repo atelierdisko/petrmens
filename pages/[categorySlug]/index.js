@@ -22,13 +22,11 @@ export default function Category({category}) {
         <Fragment>
             <Meta title={category.list_title}/>
 
-            <div
-                className={utilities.grid}
-                style={{
-                    marginTop: `26px`,
-                }}
-            >
-                <h1 className={joinClassNames(typography["t--gamma"], styles.title)}>
+            <div className={joinClassNames(
+                utilities.grid,
+                utilities.offset
+            )}>
+                <h1 className={joinClassNames(typography["t--delta"], styles.title)}>
                     {category.list_title}
                 </h1>
             </div>

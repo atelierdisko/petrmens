@@ -32,7 +32,7 @@ const Header = () => {
             </nav>
 
             {headerBackLink && (
-                <nav className={styles.nav} style={{marginTop: "10px"}}>
+                <nav className={styles["nav--secondary"]}>
                     <Link href={headerBackLink}>
                         <a className={joinClassNames(
                             typography["t--zeta"],

@@ -30,12 +30,11 @@ export default function Piece({piece}) {
                 image={getImage(piece.image)}
             />
 
-            <div
-                className={joinClassNames(utilities.grid, styles.root)}
-                style={{
-                    marginTop: `26px`,
-                }}
-            >
+            <div className={joinClassNames(
+                utilities.grid,
+                utilities.offset,
+                styles.root
+            )}>
                 <Image
                     src={getImage(piece.image)}
                     alt={piece.title}

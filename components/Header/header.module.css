@@ -16,6 +16,11 @@
     justify-content: space-between;
 }
 
+.nav--secondary {
+    composes: nav;
+    margin-top: 10px;
+}
+
 .item {
     display: flex;
     pointer-events: all;

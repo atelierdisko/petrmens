@@ -94,12 +94,10 @@ export default function Info({ categories }) {
     <Fragment>
       <Meta title={"Info"} />
 
-      <div
-        className={utilities.grid}
-        style={{
-          marginTop: `26px`,
-        }}
-      >
+      <div className={joinClassNames(
+          utilities.grid,
+          utilities.offset
+      )}>
       </div>
 
       <div className={joinClassNames(utilities.grid)}>
