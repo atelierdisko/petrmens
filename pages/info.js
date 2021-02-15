@@ -96,8 +96,9 @@ export default function Info({ categories }) {
 
       <div className={joinClassNames(
           utilities.grid,
-          utilities.offset
-      )}>
+      )} style={{
+        marginTop: "22px"
+      }}>
       </div>
 
       <div className={joinClassNames(utilities.grid)}>

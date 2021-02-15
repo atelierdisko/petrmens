@@ -24,8 +24,9 @@ export default function Category({category}) {
 
             <div className={joinClassNames(
                 utilities.grid,
-                utilities.offset
-            )}>
+            )} style={{
+                marginTop: "30px"
+            }}>
                 <h1 className={joinClassNames(typography["t--delta"], styles.title)}>
                     {category.list_title}
                 </h1>
