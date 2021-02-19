@@ -62,7 +62,7 @@ const AccordionItem = ({ category, setPreviewPiece, ...rest }) => {
               >
                 <span
                   className={joinClassNames(
-                    typography["t--zeta"],
+                    typography["t--theta"],
                     styles.yearListItemYear
                   )}
                 >
@@ -94,17 +94,12 @@ export default function Info({ categories }) {
     <Fragment>
       <Meta title={"Info"} />
 
-      <div className={joinClassNames(
-          utilities.grid,
-      )} style={{
-        marginTop: "22px"
-      }}>
-      </div>
+      <div className={joinClassNames(utilities.grid, utilities.offset)}></div>
 
       <div className={joinClassNames(utilities.grid)}>
         <div className={styles.bioGrid}>
           <div>
-            <p className={joinClassNames(typography["t--iota"])}>
+            <p className={joinClassNames(typography["t--theta"])}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -114,11 +109,9 @@ export default function Info({ categories }) {
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
 
-            <br />
-
             <a
               href="mailto:p.mens@seznam.cz"
-              className={joinClassNames(typography["t--iota"])}
+              className={joinClassNames(typography["t--theta"])}
             >
               E-Mail: p.mens@seznam.cz
             </a>

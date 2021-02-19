@@ -50,6 +50,7 @@
 
 .introTitle {
   margin: 0 auto;
+  font-weight: 400;
 }
 
 .introTitleWord {
@@ -85,6 +86,7 @@
   text-align: center;
   margin-bottom: calc(4 * var(--spacing-unit));
   z-index: 100;
+  font-weight: 400;
   color: var(--color-black);
 }
 

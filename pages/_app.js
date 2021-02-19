@@ -1,7 +1,7 @@
 import "../styles/normalizations.css";
 import "../styles/variables.css";
 import "../styles/typography.module.css";
-import { createContext,useState } from "react";
+import { createContext, useState } from "react";
 import Header from "../components/Header/header";
 import usePersistentState from "../hooks/usePersistentState";
 
@@ -16,8 +16,8 @@ const MyApp = ({ Component, pageProps }) => {
       value={{
         intro,
         setIntro,
-          headerBackLink,
-          setHeaderBackLink
+        headerBackLink,
+        setHeaderBackLink,
       }}
     >
       <Header />

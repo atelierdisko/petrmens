@@ -22,6 +22,7 @@
 }
 
 .indexTitle {
+    font-weight: 600;
     margin-bottom: calc(3 * var(--spacing-unit));
 }
 
@@ -77,17 +78,18 @@
 
 .accordionItemHeaderTitle {
     margin: 0;
+    font-weight: 400;
 }
 
 .yearListItem {
-    padding-bottom: calc(3 * var(--spacing-unit));
+    padding-bottom: calc(2 * var(--spacing-unit));
     margin-bottom: calc(3 * var(--spacing-unit));
     border-bottom: 1px solid var(--color-black);
 }
 
 .yearListItemYear {
     display: block;
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: calc(1.5 * var(--spacing-unit));
 }
 
