@@ -19,7 +19,7 @@ export default function Category({ category }) {
 
   return (
     <Fragment>
-      <Meta title={category.list_title} />
+      <Meta title={category.list_title} description={`${category.list_title}`}/>
 
       <div className={joinClassNames(utilities.grid, utilities.offset)}>
         <h1 className={joinClassNames(typography["t--delta"], styles.title)}>
