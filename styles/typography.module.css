@@ -42,7 +42,6 @@
     font-size: 102px;
     line-height: 132px;
     letter-spacing: 2px;
-    margin: 0;
 }
 
 /* Headline 2 /h2 */
@@ -51,7 +50,6 @@
     font-size: 64px;
     line-height: 83px;
     letter-spacing: 2px;
-    margin: 0;
 }
 
 /* Headline 3 /h3 */
@@ -59,7 +57,6 @@
     font-family: var(--font-family-sans);
     font-size: 51px;
     line-height: 66px;
-    margin: 0;
 }
 
 /* Headline 4 /h4 */
@@ -67,7 +64,6 @@
     font-family: var(--font-family-sans);
     font-size: 36px;
     line-height: 40px;
-    margin: 0;
 }
 
 /* Navigation */
@@ -75,7 +71,6 @@
     font-family: var(--font-family-sans);
     font-size: 22px;
     line-height: 33px;
-    margin: 0;
 }
 
 /* Subtitle 1 */
@@ -83,7 +78,6 @@
     font-family: var(--font-family-sans);
     font-size: 17px;
     line-height: 21px;
-    margin: 0;
 }
 
 /* Subtitle 2 */
@@ -91,7 +85,6 @@
     font-family: var(--font-family-sans);
     font-size: 13px;
     line-height: 19px;
-    margin: 0;
 }
 
 /* Body 1 */
@@ -99,7 +92,6 @@
     font-family: var(--font-family-sans);
     font-size: 18px;
     line-height: 28px;
-    margin: 0;
 }
 
 /* Body 2 */
@@ -107,7 +99,6 @@
     font-family: var(--font-family-sans);
     font-size: 14px;
     line-height: 21px;
-    margin: 0;
 }
 
 @media (max-width: 1024px) {
