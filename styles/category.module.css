@@ -4,23 +4,28 @@
     grid-column: 2 / span 6;
     margin-top: 0;
     margin-bottom: calc(4 * var(--spacing-unit));
-    font-weight: 400;
+}
+
+.collectionTitle {
+    font-weight: 300;
+    grid-column: 2 / span 6;
 }
 
 .list {
     grid-row-gap: calc(16 * var(--spacing-unit));
+    padding-bottom: calc(8 * var(--spacing-unit));
 }
 
 .piece {
     grid-column: 2 / span 3;
 }
 
-.piece:nth-child(even) {
+.piece:nth-of-type(even) {
     grid-column: 5 / span 3;
     margin-left: calc(5 * var(--spacing-unit));
 }
 
-.piece:nth-child(odd) {
+.piece:nth-of-type(odd) {
     margin-right: calc(5 * var(--spacing-unit));
 }
 
@@ -32,6 +37,10 @@
     padding: 0;
     margin: 0;
     margin-bottom: 4px;
+}
+
+.pieceMetaTitle {
+    font-weight: 400;
 }
 
 @media (min-width: 768px) and (max-width: 1024px), (max-width: 767px) {
