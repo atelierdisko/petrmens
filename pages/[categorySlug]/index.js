@@ -182,9 +182,7 @@ export async function getStaticProps({params}) {
         return collection.pieces.map((collectionPiece) => collectionPiece.id);
     });
 
-    console.log(collectionPieceIds);
-
-    collectionPieceIds = collectionPieceIds.flat();
+    collectionPieceIds = [].concat(...collectionPieceIds);
 
     let data = [];
 
