@@ -4,6 +4,7 @@
     grid-column: 2 / span 6;
     margin-top: 0;
     margin-bottom: calc(4 * var(--spacing-unit));
+    font-weight: 400;
 }
 
 .collectionTitle {
