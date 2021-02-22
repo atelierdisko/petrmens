@@ -178,11 +178,7 @@ export async function getStaticProps({ params }) {
     (collection) => collection.latestYear !== undefined
   );
 
-  const collectionPieceIds = collections
-    .map((collection) =>
-      collection.pieces.map((collectionPiece) => collectionPiece.id)
-    )
-    .flat();
+  const collectionPieceIds = collections.map((collection) => collection.pieces.map((collectionPiece) => collectionPiece.id)).flat();
 
   let data = [];
 
