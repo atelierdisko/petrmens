@@ -46,7 +46,11 @@ export default function Piece({ piece }) {
         />
 
         <div className={styles.meta}>
-          <p className={joinClassNames(styles.metaItem, typography["t--zeta"])}>
+          <p className={joinClassNames(
+              styles.metaItem,
+              styles.metaItemTitle,
+              typography["t--zeta"]
+          )}>
             {piece.title} / {piece.title_en}
           </p>
 

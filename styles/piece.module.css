@@ -9,23 +9,14 @@
     margin-bottom: calc(4 * var(--spacing-unit));
 }
 
-.metaItem{
+.metaItem {
     margin: 0;
     padding: 0;
     margin-bottom: 4px;
 }
 
-.metaItemDimensions,
 .metaItemTitle {
-    grid-column: 1 / span 2;
-}
-
-.metaItemTitle {
-    margin-bottom: var(--spacing-unit);
-}
-
-.metaItemYear {
-    text-align: right;
+    font-weight: 400;
 }
 
 @media (min-width: 768px) and (max-width: 1024px), (max-width: 767px) {
