@@ -15,7 +15,7 @@ const PieceListItem = ({ piece, setPreviewPiece, key, ...rest }) => {
     <li className={styles.item} {...rest}>
       <Link href={piece.slug}>
         <a
-          className={joinClassNames(typography["t--zeta"], styles.itemTitle)}
+          className={joinClassNames(typography["t--theta"], styles.itemTitle)}
           onMouseLeave={() => setPreviewPiece(null)}
           onMouseEnter={() => setPreviewPiece(piece)}
         >

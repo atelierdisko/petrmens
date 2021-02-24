@@ -22,7 +22,7 @@
 }
 
 .indexTitle {
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: calc(3 * var(--spacing-unit));
 }
 
@@ -100,10 +100,6 @@
 
 .itemTitle:hover {
     text-decoration: underline;
-}
-
-.item {
-    margin-bottom: 4px;
 }
 
 @media (min-width: 768px) and (max-width: 1024px), (max-width: 767px) {

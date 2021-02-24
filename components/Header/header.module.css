@@ -23,6 +23,7 @@
 
 .item {
     display: flex;
+    font-weight: 500    ;
     pointer-events: all;
 }
 

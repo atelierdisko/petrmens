@@ -62,8 +62,8 @@
 /* Headline 4 /h4 */
 .t--delta {
     font-family: var(--font-family-sans);
-    font-size: 36px;
-    line-height: 40px;
+    font-size: 38px;
+    line-height: 44px;
 }
 
 /* Navigation */
@@ -77,7 +77,7 @@
 .t--zeta {
     font-family: var(--font-family-sans);
     font-size: 17px;
-    line-height: 21px;
+    line-height: 20px;
 }
 
 /* Subtitle 2 */
@@ -90,7 +90,7 @@
 /* Body 1 */
 .t--theta {
     font-family: var(--font-family-sans);
-    font-size: 18px;
+    font-size: 17px;
     line-height: 28px;
 }
 
