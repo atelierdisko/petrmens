@@ -46,11 +46,13 @@ export default function Piece({ piece }) {
         />
 
         <div className={styles.meta}>
-          <p className={joinClassNames(
+          <p
+            className={joinClassNames(
               styles.metaItem,
               styles.metaItemTitle,
               typography["t--zeta"]
-          )}>
+            )}
+          >
             {piece.title} / {piece.title_en}
           </p>
 
@@ -82,24 +84,32 @@ export async function getStaticPaths() {
   const {
     data: { data: categories },
   } = await axios.get("https://cms.petrmens.art/petrmens/items/category");
+
   const {
     data: { data: pieces },
-  } = await axios.get("https://cms.petrmens.art/petrmens/items/piece?fields");
-
-  categories.forEach((category) => {
-    category.pieces = pieces.filter((piece) => piece.category === category.id);
+  } = await axios.get("https://cms.petrmens.art/petrmens/items/piece", {
+    params: {
+      limit: 500,
+    },
   });
 
   const paths = [];
 
-  categories.forEach((category) => {
-    category.pieces.forEach((piece) => {
-      paths.push(`/${category.slug}/${piece.slug}`);
-    });
+  pieces.forEach((piece) => {
+    if (!piece.slug) {
+      return;
+    }
+
+    const category = categories.find(
+      (category) => category.id === piece.category
+    );
+    const path = `/${category.slug}/${piece.slug}`;
+
+    paths.push(path);
   });
 
   return {
     paths: paths,
-    fallback: false,
+    fallback: true,
   };
 }
