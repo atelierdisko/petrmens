@@ -7,5 +7,24 @@ services:
     volumes:
       - ./:/app
     command: ["node_modules/.bin/next", "start"]
-    ports:
-    - 3000:3000
+    user: 1000:1000
+    expose:
+      - 3000
+
+  nginx:
+    working_dir: /var/www
+    build: _docker/nginx
+    volumes:
+      - ./public:/var/www
+      - ./_docker/nginx/prod.conf:/etc/nginx/conf.d/default.conf
+    expose:
+      - 80
+    environment:
+      VIRTUAL_HOST: petrmens.art, www.petrmens.art
+      LETSENCRYPT_HOST: petrmens.art, www.petrmens.art
+      LETSENCRYPT_EMAIL: infra@jansasinka.de
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

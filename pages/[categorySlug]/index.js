@@ -159,10 +159,10 @@ export async function getStaticProps({ params }) {
         (piece) => collectionPiece.piece_id === piece.id
       );
 
-      if (!match) {
-        console.warn(
+      if (!match && process.env !== "production") {
+       /* console.warn(
           `No match for piece ${collectionPiece.piece_id} of collection '${collection.title}'`
-        );
+        );*/
       }
 
       return match;
