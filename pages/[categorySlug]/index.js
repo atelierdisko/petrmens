@@ -56,6 +56,15 @@ export default function Category({ category }) {
         description={`${category.list_title}`}
       />
 
+      <h1
+        style={{
+          display: "none",
+        }}
+      >
+        Petr Mens – {category.list_title}
+        Petr Menš – {category.list_title}
+      </h1>
+
       <div className={joinClassNames(utilities.grid, utilities.offset)}>
         <h1 className={joinClassNames(typography["t--delta"], styles.title)}>
           {category.list_title}
@@ -160,7 +169,7 @@ export async function getStaticProps({ params }) {
       );
 
       if (!match && process.env !== "production") {
-       /* console.warn(
+        /* console.warn(
           `No match for piece ${collectionPiece.piece_id} of collection '${collection.title}'`
         );*/
       }

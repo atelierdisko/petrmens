@@ -25,6 +25,14 @@ export default function Home({ categories }) {
     <Fragment>
       <Meta title={"Home"} />
 
+      <h1
+        style={{
+          display: "none",
+        }}
+      >
+        Petr Mens – Home Petr Menš – Home
+      </h1>
+
       <div
         className={styles.introRoot}
         style={{
@@ -32,7 +40,7 @@ export default function Home({ categories }) {
         }}
       >
         <div className={styles.intro}>
-          <h1
+          <h2
             className={joinClassNames(
               styles.introTitle,
               typography["t--alpha"]
@@ -40,7 +48,7 @@ export default function Home({ categories }) {
           >
             <span className={styles.introTitleWord}>Petr</span>{" "}
             <span className={styles.introTitleWord}>Menš</span>
-          </h1>
+          </h2>
         </div>
       </div>
 

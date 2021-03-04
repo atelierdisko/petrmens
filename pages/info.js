@@ -94,9 +94,15 @@ export default function Info({ categories }) {
     <Fragment>
       <Meta title={"Info"} />
 
-      <div className={joinClassNames(utilities.grid, utilities.offset)}></div>
+      <h1
+        style={{
+          display: "none",
+        }}
+      >
+        Petr Mens – Info Petr Menš – Info
+      </h1>
 
-      <div className={joinClassNames(utilities.grid)}>
+      <div className={joinClassNames(utilities.grid, utilities.offset)}>
         <div className={styles.bioGrid}>
           <div>
             <p className={joinClassNames(typography["t--theta"])}>
@@ -144,7 +150,7 @@ export default function Info({ categories }) {
         <Fragment>
           <Image
             src={previewPiece.image}
-            alt={previewPiece.title}
+            alt={`${previewPiece.title} – a piece by Petr Menš created in ${previewPiece.year}.`}
             manipulations={{ w: 400 }}
             className={styles.previewPiece}
           />

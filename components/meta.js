@@ -10,7 +10,7 @@ const Meta = ({title, description, image}) => {
     }
 
     const defaultImage = "https://img.jansasinka.de/petrmens/cms/a3d90cce-4a2a-4b97-bc53-e3b9f6a5da2e.jpg";
-    const defaultDescription = "Lorem ipsum";
+    const defaultDescription = "Petr Menš – ";
 
     return (
         <Head>
@@ -33,6 +33,8 @@ const Meta = ({title, description, image}) => {
                 property="og:image"
                 content={`${image ? image : defaultImage}?w=1200&h=627&fit=crop`}
             />
+
+            <meta name="robots" content="index,follow"/>
         </Head>
     )
 }
