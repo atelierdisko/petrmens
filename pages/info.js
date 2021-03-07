@@ -184,7 +184,10 @@ export async function getStaticProps() {
         return {
           list_title: category.list_title,
           pieces: pieces
-            .filter((piece) => piece.category.title === category.title)
+            .filter(
+              (piece) =>
+                piece.category && piece.category.title === category.title
+            )
             .map((piece) => {
               return {
                 title: piece.title,
