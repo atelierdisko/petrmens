@@ -123,6 +123,10 @@ export async function getStaticPaths() {
       (category) => category.id === piece.category
     );
 
+    if (!category) {
+      return;
+    }
+
     const path = `/${category.slug}/${piece.slug}`;
 
     paths.push(path);
