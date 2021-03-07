@@ -6,7 +6,7 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-    command: ["node_modules/.bin/next", "start"]
+    command: ["NODE_ENV=production node_modules/.bin/next", "start"]
     user: 1000:1000
     expose:
       - 3000
