@@ -50,7 +50,7 @@ export default function Category({ category }) {
   }, []);
 
   return (
-    <Fragment>
+    <>
       <Meta
         title={category.list_title}
         description={`${category.list_title}`}
@@ -111,7 +111,7 @@ export default function Category({ category }) {
           );
         })}
       </div>
-    </Fragment>
+    </>
   );
 }
 

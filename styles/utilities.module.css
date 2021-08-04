@@ -10,10 +10,19 @@
     margin-top: 120px;
 }
 
+.gridOffset {
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
 @media (min-width: 768px) and (max-width: 1024px), (max-width: 767px) {
     .grid {
         grid-template-columns: repeat(4, 1fr);
         padding-left: 16px;
         padding-right: 16px;
+    }
+
+    .offset {
+        margin-top: 100px;
     }
 }

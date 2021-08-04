@@ -13,11 +13,11 @@
     margin-bottom: calc(2 * var(--spacing-unit));
 }
 
-.bioGrid {
-    grid-column: 2 / span 2;
+.left {
+    grid-column: 1 / span 3;
 }
 
-.indexGrid {
+.right {
     grid-column: 5 / span 3;
 }
 
@@ -97,6 +97,22 @@
     text-decoration: underline;
 }
 
+.bio {
+    grid-column: 2 / span 3;
+    list-style: none;
+    margin-bottom: 32px;
+}
+
+.bioItem {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 50px auto;
+}
+
+.bioItem:first-child {
+    margin-top: 0;
+}
+
 @media (min-width: 768px) and (max-width: 1024px), (max-width: 767px) {
     .previewPiece {
         display: none;
@@ -108,15 +124,15 @@
         grid-column: 1 / span 3;
     }
 
-    .bioGrid {
+    .left {
         grid-column: 1 / span 3;
     }
 
-    .indexGrid {
+    .right {
         grid-column: 1 / span 3;
     }
 
-    .indexGrid {
+    .right {
         margin-top: calc(7 * var(--spacing-unit));
     }
 }
@@ -126,15 +142,15 @@
         grid-column: 1 / span 4;
     }
 
-    .bioGrid {
+    .left {
         grid-column: 1 / span 4;
     }
 
-    .indexGrid {
+    .right {
         grid-column: 1 / span 4;
     }
 
-    .indexGrid {
+    .right {
         margin-top: calc(4 * var(--spacing-unit));
     }
 }

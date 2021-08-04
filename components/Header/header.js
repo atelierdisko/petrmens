@@ -1,39 +1,54 @@
-import React, {useContext} from "react"
+import React from "react"
 import styles from "./header.module.css"
 import typography from "./../../styles/typography.module.css"
 import joinClassNames from "../../utilities/joinClassNames"
 import Link from "next/link"
 import ArrowLeft from "../Icon/arrowRight";
-import {AppContext} from "../../pages/_app";
 
-const Header = () => {
-    const {headerBackLink} = useContext(AppContext)
+const Header = ({backLink, text}) => {
 
     return (
         <header className={joinClassNames(styles.root)}>
             <nav className={styles.nav}>
                 <Link href={"/"}>
-                    <a className={joinClassNames(
-                        typography["t--epsilon"],
-                        styles.item
-                    )}>
-                        Petr Menš
-                    </a>
+                    <span className={styles.logo}>
+                        <a className={joinClassNames(
+                            typography["t--epsilon"],
+                            styles.item
+                        )}>
+                            Petr Menš
+                        </a>
+
+                        <span>{text}</span>
+                    </span>
+
+
                 </Link>
 
-                <Link href={"/info"}>
-                    <a className={joinClassNames(
-                        typography["t--epsilon"],
-                        styles.item
-                    )}>
-                        Info
-                    </a>
-                </Link>
+                <div className={styles.navRight}>
+                    {/* <Link href={"/through-time"}>
+                        <a className={joinClassNames(
+                            typography["t--epsilon"],
+                            styles.item
+                        )}>
+                            Through time
+                        </a>
+                    </Link>*/}
+
+                    <Link href={"/info"}>
+                        <a className={joinClassNames(
+                            typography["t--epsilon"],
+                            styles.item
+                        )}>
+                            Info
+                        </a>
+                    </Link>
+                </div>
             </nav>
 
-            {headerBackLink && (
+            {backLink && (
                 <nav className={styles["nav--secondary"]}>
-                    <Link href={headerBackLink}>
+                    <Link href={backLink}>
                         <a className={joinClassNames(
                             typography["t--zeta"],
                             styles.item

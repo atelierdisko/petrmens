@@ -23,7 +23,7 @@ export default function Home({ categories }) {
 
   return (
     <Fragment>
-      <Meta title={"Home"} />
+      <Meta title={"Home"}/>
 
       <h1
         style={{

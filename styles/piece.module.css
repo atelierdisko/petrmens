@@ -1,26 +1,40 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .image {
     grid-column: 2 / span 6;
 }
 
-.meta {
-    grid-column: 2 / span 6;
-    grid-row: 2;
-    margin-top: calc(4 * var(--spacing-unit));
-    margin-bottom: calc(4 * var(--spacing-unit));
+.isPortrait * {
+    height: 100%;
 }
 
-.metaItem {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 4px;
+.isPortrait {
+    height: 75vh;
 }
 
-.metaItemTitle {
-    font-weight: 400;
+.isLandscape {
+    width: 60vw;
+}
+
+.isLandscape * {
+    height: auto;
+    width: 100%;
 }
 
 @media (min-width: 768px) and (max-width: 1024px), (max-width: 767px) {
     .root > * {
         grid-column: 1 / span 4;
+    }
+
+    .root {
+        padding: 16px;
+    }
+
+    .isLandscape {
+        width: 100%;
     }
 }

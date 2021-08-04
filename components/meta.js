@@ -1,7 +1,9 @@
 import Head from "next/head";
 import React from "react";
 
-const Meta = ({title, description, image}) => {
+const defaultDescription = "Petr Menš, painter, graphic designer, art teacher from north bohemia."
+
+const Meta = ({title, description = defaultDescription, image}) => {
 
     let url = null;
 
@@ -10,19 +12,18 @@ const Meta = ({title, description, image}) => {
     }
 
     const defaultImage = "https://img.jansasinka.de/petrmens/cms/a3d90cce-4a2a-4b97-bc53-e3b9f6a5da2e.jpg";
-    const defaultDescription = "Petr Menš – ";
 
     return (
         <Head>
             <title>Petr Menš | {title}</title>
             <meta
                 name="description"
-                content={description ? description : defaultDescription}
+                content={description}
             />
             <meta property="og:title" content={`Petr Menš – ${title}`}/>
             <meta
                 property="og:description"
-                content={description ? description : defaultDescription}
+                content={description}
             />
 
             <meta property="og:type" content="website"/>
