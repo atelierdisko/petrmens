@@ -48,7 +48,7 @@ export default function Category({category}) {
 
     useEffect(() => {
         setHeaderBackLink("/");
-        setHeaderChildren(<HeaderCrumb href={"/paintings"} label={category.list_title}/>)
+        setHeaderChildren(<HeaderCrumb label={category.list_title}/>)
     }, []);
 
     return (
