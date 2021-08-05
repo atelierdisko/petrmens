@@ -8,12 +8,19 @@ import Meta from "../../components/meta";
 import {AppContext} from "../_app";
 import ImageCaption from "../../components/ImageCaption/imageCaption";
 import cn from "classnames";
+import {HeaderCrumb} from "../../components/Header/header";
 
 export default function Piece({piece}) {
-    const {setHeaderBackLink} = useContext(AppContext);
+    const {setHeaderBackLink, setHeaderChildren} = useContext(AppContext);
 
     useEffect(() => {
         setHeaderBackLink(`/${piece.category.slug}`);
+        setHeaderChildren(
+            <>
+                <HeaderCrumb href={`/${piece.category.slug}`} label={piece.category.list_title}/>
+                <HeaderCrumb label={piece.title}/>
+            </>
+        )
     }, []);
 
     if (!piece) {
@@ -67,16 +74,16 @@ export default function Piece({piece}) {
     );
 }
 
-export async function getStaticProps({params}) {
+export async function getStaticProps(
+    {
+        params
+    }
+) {
     const {
         data: {data: piece},
     } = await axios.get(
         `https://cms.petrmens.art/petrmens/items/piece?filter[slug][eq]=${params.pieceSlug}&single=true&fields=*.*.*`
     );
-
-    if (!piece) {
-        console.log(params);
-    }
 
     return {
         props: {

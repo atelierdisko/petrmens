@@ -43,6 +43,5 @@
     /* Spacing */
     --spacing-unit: 8px;
 
-    --container-offset: calc(12 * var(--spacing-unit));
-    --headerheight: 100px;
+    --container-offset: 120px;
 }

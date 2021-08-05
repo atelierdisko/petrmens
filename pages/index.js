@@ -11,14 +11,14 @@ import Meta from "../components/meta";
 
 export default function Home({ categories }) {
   const [previewCategory, setPreviewCategory] = useState(null);
-  const { intro, setIntro, setHeaderBackLink } = useContext(AppContext);
+  const { intro, setIntro, setHeaderChildren } = useContext(AppContext);
 
   useEffect(() => {
     setTimeout(() => {
       setIntro(false);
     }, 5000);
 
-    setHeaderBackLink(null);
+    setHeaderChildren(null);
   }, []);
 
   return (

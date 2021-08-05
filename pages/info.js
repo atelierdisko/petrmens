@@ -181,10 +181,10 @@ const bio = [
 
 export default function Info({categories}) {
     const [previewPiece, setPreviewPiece] = useState(null);
-    const {setHeaderText} = useContext(AppContext);
+    const {setHeaderChildren} = useContext(AppContext);
 
     useEffect(() => {
-        setHeaderText(", painter, graphic designer, art teacher.")
+        setHeaderChildren(", painter, graphic designer, art teacher.")
     }, []);
 
     return (
@@ -211,6 +211,8 @@ export default function Info({categories}) {
                         >
                             Biographical information
                         </h2>
+
+                        <img src={"https://cdn.petrmens.art/petrmens/cms/163bdaa8-aa46-42e1-8021-8492ee8d839b.jpg?w=200"} alt={"bio"}/>
 
                         <ul className={cn(styles.bio, typography["t--theta"])}>
                             {bio.map(item => (

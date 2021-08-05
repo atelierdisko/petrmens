@@ -5,6 +5,7 @@ import {createContext, useEffect, useState} from "react";
 import Header from "../components/Header/header";
 import usePersistentState from "../hooks/usePersistentState";
 import {useRouter} from "next/router";
+import utilities from "../styles/utilities.module.css"
 
 export const AppContext = createContext({});
 
@@ -16,27 +17,29 @@ const MyApp = ({Component, pageProps}) => {
     const {pathname} = useRouter();
     const [intro, setIntro] = usePersistentState("intro", true, "session");
     const [headerBackLink, setHeaderBackLink] = useState(false);
-    const [headerText, setHeaderText] = useState(null);
+    const [headerChildren, setHeaderChildren] = useState(null);
 
     useEffect(() => {
-        if (pathname !== "/info") {
-            setHeaderText(null);
-        }
+    /*    if (pathname !== "/info") {
+            setHeaderChildren(null);
+        }*/
 
     }, [pathname]);
 
     return (
-        <AppContext.Provider
-            value={{
-                intro,
-                setIntro,
-                setHeaderBackLink,
-                setHeaderText
-            }}
-        >
-            <Header backLink={headerBackLink} text={headerText}/>
-            <Component {...pageProps} />
-        </AppContext.Provider>
+            <AppContext.Provider
+                value={{
+                    intro,
+                    setIntro,
+                    setHeaderBackLink,
+                    setHeaderChildren
+                }}
+            >
+                <Header backLink={headerBackLink}>
+                    {headerChildren}
+                </Header>
+                <Component {...pageProps} />
+            </AppContext.Provider>
     );
 };
 

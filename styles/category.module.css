@@ -15,6 +15,8 @@
 .list {
     grid-row-gap: calc(16 * var(--spacing-unit));
     padding-bottom: calc(8 * var(--spacing-unit));
+    max-width: 1800px;
+    margin: inherit auto;
 }
 
 .piece {

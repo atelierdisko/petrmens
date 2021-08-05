@@ -3,10 +3,7 @@
     position: fixed;
     width: 100%;
     z-index: 100;
-    pointer-events: none;
-    padding-right: 32px;
-    padding-left: 32px;
-    padding-top: 32px;
+    padding: 32px;
     align-items: center;
 }
 
@@ -20,9 +17,13 @@
     margin-right: 32px;
 }
 
-.logo * {
-    display: inline !important;
-    margin: 0 !important;
+.logoText {
+    font-weight: 400;
+}
+
+.logo > * {
+    display: inline;
+    margin: 0;
 }
 
 .navRight {
@@ -32,7 +33,6 @@
 .item {
     display: flex;
     font-weight: 500;
-    pointer-events: all;
     cursor: pointer;
     margin-right: 32px;
 }
@@ -44,6 +44,11 @@
 .nav--secondary {
     composes: nav;
     margin-top: 10px;
+}
+
+.crumbSeparator {
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 @media (min-width: 768px) and (max-width: 1024px), (max-width: 767px) {
