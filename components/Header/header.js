@@ -27,35 +27,22 @@ const Header = ({children}) => {
         <header className={joinClassNames(styles.root)}>
             <nav className={styles.nav}>
                     <span className={styles.logo}>
-                        <Link href={"/"}>
-                        <a className={joinClassNames(
+                        <Link href={"/"} className={joinClassNames(
                             typography["t--epsilon"],
                             styles.logoText
                         )}>
                             Petr Menš
-                        </a>
                                 </Link>
 
                         {children}
                     </span>
 
                 <div className={styles.navRight}>
-                    {/* <Link href={"/through-time"}>
-                        <a className={joinClassNames(
-                            typography["t--epsilon"],
-                            styles.item
-                        )}>
-                            Through time
-                        </a>
-                    </Link>*/}
-
-                    <Link href={"/info"}>
-                        <a className={joinClassNames(
+                    <Link href={"/info"} className={joinClassNames(
                             typography["t--epsilon"],
                             styles.item
                         )}>
                             Info
-                        </a>
                     </Link>
                 </div>
             </nav>

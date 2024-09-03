@@ -14,14 +14,11 @@ import {HeaderCrumb} from "../../components/Header/header";
 const Piece = ({id, slug, title, englishTitle, image, year}) => (
     <div className={styles.piece} key={`piece-${id}`}>
         <Link href={slug}>
-            <a href={slug}>
                 <Image manipulations={{w: 400}} src={image} alt={title}/>
-            </a>
         </Link>
 
         <div className={styles.pieceMeta}>
             <Link href={slug}>
-                <a href={slug}>
                     <p
                         className={joinClassNames(
                             typography["t--zeta"],
@@ -31,7 +28,6 @@ const Piece = ({id, slug, title, englishTitle, image, year}) => (
                     >
                         {title} / {englishTitle}
                     </p>
-                </a>
             </Link>
 
             <p

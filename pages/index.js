@@ -57,8 +57,7 @@ export default function Home({ categories }) {
           {categories.map((category, index) => {
             return (
               <Fragment key={`category-${index}`}>
-                <Link href={category.slug}>
-                  <a
+                <Link href={category.slug}
                     className={joinClassNames(
                       styles.categoryItem,
                       typography["t--alpha"]
@@ -87,7 +86,6 @@ export default function Home({ categories }) {
                       src={category.featuredPiece.image}
                       alt={category.featuredPiece.title}
                     />
-                  </a>
                 </Link>
               </Fragment>
             );

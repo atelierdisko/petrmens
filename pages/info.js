@@ -14,14 +14,12 @@ import {AppContext} from "./_app";
 const PieceListItem = ({piece, setPreviewPiece, key, ...rest}) => {
     return (
         <li className={styles.item} {...rest}>
-            <Link href={piece.slug}>
-                <a
+            <Link href={piece.slug}
                     className={cn(typography["t--theta"], styles.itemTitle)}
                     onMouseLeave={() => setPreviewPiece(null)}
                     onMouseEnter={() => setPreviewPiece(piece)}
                 >
                     {piece.title} / {piece.title_en}
-                </a>
             </Link>
         </li>
     );
