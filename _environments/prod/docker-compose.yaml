@@ -1,0 +1,21 @@
+services:
+  petrmens-nextjs:
+    build:
+      context: .
+      dockerfile: nextjs/Dockerfile
+
+  petrmens-nginx:
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    expose:
+      - 80
+    environment:
+      VIRTUAL_HOST: $PROJECT_HOSTNAME
+      LETSENCRYPT_HOST: $PROJECT_HOSTNAME
+      LETSENCRYPT_EMAIL: infra@atelierdisko.de
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
