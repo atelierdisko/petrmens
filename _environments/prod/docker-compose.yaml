@@ -51,7 +51,7 @@ services:
       - no-new-privileges:true
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.petrmens-nginx.rule=Host(`${PROJECT_HOSTNAME}`)"
+      - "traefik.http.routers.petrmens-nginx.rule=Host(`www.petrmens.art`) || Host(`petrmens.art`)"
       - "traefik.http.routers.petrmens-nginx.entrypoints=websecure"
       - "traefik.http.routers.petrmens-nginx.tls.certresolver=letsencrypt"
     networks:
