@@ -1,0 +1,7 @@
+# Check if "node_modules" directory is out of sync with the "pnpm-lock.yaml" file. prompt to install if check fails.
+verifyDepsBeforeRun: prompt
+
+# Wait until seven days after release to install new versions of packages to reduce risk of installing malicious packages
+minimumReleaseAge: 10080
+
+useNodeVersion: 22.15.0

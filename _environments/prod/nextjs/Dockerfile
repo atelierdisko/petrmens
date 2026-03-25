@@ -1,58 +1,68 @@
-FROM node:20.9.0-alpine AS base
+ARG NODE_VERSION
 
-# Install dependencies only when needed
-FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+# Alpine image
+FROM node:${NODE_VERSION}-alpine AS alpine
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+# This will automatically install the exact pnpm version specified in package.json's packageManager field
+RUN corepack enable && apk update && apk add --no-cache libc6-compat
+
+FROM alpine AS deps
 WORKDIR /app
 
-# Install dependencies based on the preferred package manager
-COPY package.json package-lock.json .npmrc ./
-RUN npm ci
+ENV CI=true
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
-# Rebuild the source code only when needed
-FROM base AS builder
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml ./
+
+# First install the dependencies (as they change less often)
+# Use Docker secret for NPM_TOKEN to avoid exposure in image history
+RUN --mount=type=secret,id=npm_token \
+    --mount=type=cache,id=pnpm,target=/pnpm/store \
+    if [ -f /run/secrets/npm_token ]; then \
+      NPM_TOKEN=$(cat /run/secrets/npm_token) && \
+      echo "//npm.pkg.github.com/:_authToken=$NPM_TOKEN" > .npmrc && \
+      echo "@atelierdisko:registry=https://npm.pkg.github.com/" >> .npmrc; \
+    fi && \
+    pnpm install --frozen-lockfile && \
+    rm -f .npmrc
+
+# Build stage
+FROM alpine AS builder
+
 WORKDIR /app
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry during the build.
-# ENV NEXT_TELEMETRY_DISABLED 1
+# Set environment variables for build
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN npm run build
+# Build the application
+RUN pnpm build
 
-# Production image, copy all the files and run next
-FROM base AS runner
+# Final image
+FROM alpine AS runner
+
 WORKDIR /app
 
-ENV NODE_ENV production
-# Uncomment the following line in case you want to disable telemetry during runtime.
-# ENV NEXT_TELEMETRY_DISABLED 1
+ARG PORT
+ENV PORT=${PORT}
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
-COPY --from=builder /app/public ./public
+RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nodejs
 
-# Set the correct permission for prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
+USER nodejs
 
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Copy necessary files
+COPY --from=builder --chown=nodejs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nodejs:nodejs /app/.next/static .next/static
+COPY --from=builder --chown=nodejs:nodejs /app/public ./public
 
-USER nextjs
-
-EXPOSE 3000
-
-ENV PORT 3000
-# set hostname to localhost
-ENV HOSTNAME "0.0.0.0"
-
-# server.js is created by next build from the standalone output
-# https://nextjs.org/docs/pages/api-reference/next-config-js/output
-CMD ["node", "server.js"]
+EXPOSE ${PORT}
+CMD PORT=$PORT HOSTNAME=0.0.0.0 node server.js

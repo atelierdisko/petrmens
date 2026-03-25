@@ -3,19 +3,81 @@ services:
     build:
       context: .
       dockerfile: nextjs/Dockerfile
+      args:
+        - NODE_VERSION=22.15.0
+        - PORT=3000
+      secrets:
+        - npm_token
+    restart: unless-stopped
+    expose:
+      - 3000
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - default
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   petrmens-nginx:
     build:
       context: nginx
       dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      petrmens-nextjs:
+        condition: service_started
     expose:
-      - 80
+      - 8080
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+    security_opt:
+      - no-new-privileges:true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.petrmens-nginx.rule=Host(`${PROJECT_HOSTNAME}`)"
+      - "traefik.http.routers.petrmens-nginx.entrypoints=websecure"
+      - "traefik.http.routers.petrmens-nginx.tls.certresolver=letsencrypt"
+    networks:
+      - web
+      - default
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # legacy, remove in future
     environment:
       VIRTUAL_HOST: $PROJECT_HOSTNAME
       LETSENCRYPT_HOST: $PROJECT_HOSTNAME
       LETSENCRYPT_EMAIL: infra@atelierdisko.de
 
+secrets:
+  npm_token:
+    environment: NPM_TOKEN
+
 networks:
+  web:
+    name: web
+    external: true
+
+  # legacy, remove in future
   default:
     external:
       name: nginx-proxy
