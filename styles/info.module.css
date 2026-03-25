@@ -17,6 +17,10 @@
     overflow: scroll;
 }
 
+.left img {
+    width: 100%;
+}
+
 .right {
     grid-column: 5 / span 3;
     overflow: scroll;
